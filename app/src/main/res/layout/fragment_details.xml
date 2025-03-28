@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="0dp"
+            android:layout_height="452dp"
+            android:contentDescription="@string/tajmahal_typical_food_description"
+            android:foreground="@drawable/gradient"
+            android:scaleType="centerCrop"
+            android:src="@drawable/food_picture"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvRestaurantName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/jakarta_bold"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/tvRestaurantType"
+            app:layout_constraintTop_toBottomOf="@id/tvRestaurantType"
+            tools:text="Taj Mahal" />
+
+        <TextView
+            android:id="@+id/tvRestaurantType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/jakarta_regular"
+            android:textColor="#666666"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image"
+            tools:text="Restaurant Indien" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_on_premise"
+                style="@style/Widget.Material3.Chip.Suggestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/on_site"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:chipBackgroundColor="#CF2F2F"
+                app:chipCornerRadius="12dp"
+                app:chipStrokeColor="#CF2F2F"
+                app:textEndPadding="0dp"
+                app:textStartPadding="0dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_take_away"
+                style="@style/Widget.Material3.Chip.Suggestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/take_away"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:chipBackgroundColor="#CF2F2F"
+                app:chipCornerRadius="12dp"
+                app:chipStrokeColor="#CF2F2F"
+                app:textEndPadding="0dp"
+                app:textStartPadding="0dp" />
+
+
+        </com.google.android.material.chip.ChipGroup>
+
+        <View
+            android:id="@+id/separator"
+            android:layout_width="0dp"
+            android:layout_height="0.75dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+
+            android:background="#DADADA"
+            app:layout_constraintBottom_toTopOf="@+id/tvRestaurantHours"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvRestaurantName" />
+
+        <ImageView
+            android:id="@+id/icon_hours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:contentDescription="@string/icone_weekday"
+            android:src="@drawable/baseline_access_time_12"
+            app:layout_constraintBottom_toBottomOf="@id/tvRestaurantDay"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvRestaurantDay" />
+
+        <TextView
+            android:id="@+id/tvRestaurantDay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/jakarta_semibold"
+            android:textColor="#666"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/icon_hours"
+            app:layout_constraintTop_toBottomOf="@+id/separator"
+            tools:text="Mardi" />
+
+        <TextView
+            android:id="@+id/tvRestaurantHours"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/jakarta_semibold"
+            android:textColor="#666"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/separator"
+            tools:text="11h30 - 14h30・18h30 - 22h00" />
+
+
+        <ImageView
+            android:id="@+id/icon_adress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:contentDescription="@string/icon_gps"
+            android:scaleType="centerCrop"
+            android:src="@drawable/outline_location_on_12"
+            app:layout_constraintBottom_toBottomOf="@id/tvRestaurantAddress"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvRestaurantAddress" />
+
+        <TextView
+            android:id="@+id/tvRestaurantAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/jakarta_semibold"
+            android:textColor="#666"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/icon_adress"
+            app:layout_constraintTop_toBottomOf="@+id/tvRestaurantHours"
+            tools:text="12  Avenue de la Brique - 75010 Paris" />
+
+        <ImageView
+            android:id="@+id/buttonAdress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:contentDescription="@string/button_adress"
+            android:focusable="true"
+            android:padding="8dp"
+            android:src="@drawable/baseline_arrow_forward_12"
+            app:layout_constraintBottom_toBottomOf="@id/tvRestaurantAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvRestaurantAddress" />
+
+        <ImageView
+            android:id="@+id/icon_web"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:contentDescription="@string/icone_website"
+            android:scaleType="centerCrop"
+            android:src="@drawable/baseline_language_12"
+            app:layout_constraintBottom_toBottomOf="@id/tvRestaurantWebsite"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvRestaurantWebsite" />
+
+        <TextView
+            android:id="@+id/tvRestaurantWebsite"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/jakarta_semibold"
+            android:textColor="#666"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/icon_web"
+            app:layout_constraintTop_toBottomOf="@+id/tvRestaurantAddress"
+            tools:text="www.tajmahal.fr" />
+
+        <ImageView
+            android:id="@+id/buttonWebsite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:contentDescription="@string/button_website"
+            android:focusable="true"
+            android:padding="8dp"
+            android:src="@drawable/baseline_arrow_forward_12"
+            app:layout_constraintBottom_toBottomOf="@id/tvRestaurantWebsite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvRestaurantWebsite" />
+
+        <ImageView
+            android:id="@+id/icon_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:contentDescription="@string/phone_icon"
+            android:scaleType="centerCrop"
+            android:src="@drawable/outline_phone_12"
+            app:layout_constraintBottom_toBottomOf="@id/tvRestaurantPhoneNumber"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvRestaurantPhoneNumber" />
+
+        <TextView
+            android:id="@+id/tvRestaurantPhoneNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/jakarta_semibold"
+            android:textColor="#666"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/icon_phone"
+            app:layout_constraintTop_toBottomOf="@+id/tvRestaurantWebsite"
+            tools:text="06 12 34 56 78" />
+
+        <ImageView
+            android:id="@+id/buttonPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:contentDescription="@string/button_phone"
+            android:focusable="true"
+            android:padding="8dp"
+            android:src="@drawable/baseline_arrow_forward_12"
+            app:layout_constraintBottom_toBottomOf="@id/tvRestaurantPhoneNumber"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvRestaurantPhoneNumber" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">TajMahal</string>
+    <string name="restaurant">Restaurant</string>
+    <string name="maps_not_installed">Google Maps is not installed.</string>
+    <string name="phone_not_found">No app found for making calls.</string>
+    <string name="no_browser_found">No browser found.</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+    <string name="on_site">Dine-in</string>
+    <string name="take_away">Takeaway</string>
+    <string name="tajmahal_typical_food_description">A typical Indian dish from Taj Mahal restaurant.</string>
+    <string name="button_phone">Call the restaurant</string>
+    <string name="button_website">Visit the restaurant\'s website</string>
+    <string name="button_adress">View the restaurant\'s location on map</string>
+    <string name="icon_gps">Icon GPS</string>
+    <string name="icone_weekday">Icone weekday</string>
+    <string name="icone_website">Icone website</string>
+    <string name="phone_icon">Phone icon</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

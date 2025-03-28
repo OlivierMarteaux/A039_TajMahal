@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">TajMahal</string>
+    <string name="restaurant">Restaurant</string>
+    <string name="maps_not_installed">Google Maps n\'est pas installé.</string>
+    <string name="phone_not_found">Aucune application pour passer des appels n\'a été trouvée.</string>
+    <string name="no_browser_found">Aucun navigateur trouvé.</string>
+    <string name="monday">Lundi</string>
+    <string name="tuesday">Mardi</string>
+    <string name="wednesday">Mercredi</string>
+    <string name="thursday">Jeudi</string>
+    <string name="friday">Vendredi</string>
+    <string name="saturday">Samedi</string>
+    <string name="sunday">Dimanche</string>
+    <string name="on_site">Sur place</string>
+    <string name="take_away">A emporter</string>
+    <string name="tajmahal_typical_food_description">Un plat indien typique du restaurant Taj Mahal.</string>
+    <string name="button_phone">Appeler le restaurant</string>
+    <string name="button_website">Visiter le site web du restaurant</string>
+    <string name="button_adress">Voir l\'emplacement du restaurant sur la carte</string>
+    <string name="icon_gps">Icon GPS</string>
+    <string name="icone_weekday">Icone weekday</string>
+    <string name="icone_website">Icone website</string>
+    <string name="phone_icon">Phone icon</string>
+
+
+</resources>
