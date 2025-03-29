@@ -55,12 +55,19 @@ public class DetailsViewModel extends ViewModel {
     public float getTajMahalRating() {
         List<Review> reviews = getTajMahalReviews().getValue();
         if (reviews == null) return 0.0f;
-        float averageRating = 0.0f;
-        for (Review review : reviews) {
-            averageRating += review.getRate();
-        }
-        averageRating = averageRating / reviews.size();
-        return averageRating;
+//        float averageRating = 0.0f;
+//        for (Review review : reviews) {
+//            averageRating += review.getRate();
+//        }
+//        averageRating = averageRating / reviews.size();
+//        return averageRating;
+        return (float) reviews.stream().map(Review::getRate).reduce(0, Integer::sum) / reviews.size();
+    }
+
+    public int getTajMahalRatingStar(int stars) {
+        List<Review> reviews = getTajMahalReviews().getValue();
+        if (reviews == null) return 0;
+        return (int) reviews.stream().filter(review -> review.getRate() == stars).count();
     }
 
     /**
