@@ -8,10 +8,12 @@ import androidx.lifecycle.ViewModel;
 import com.openclassrooms.tajmahal.R;
 import com.openclassrooms.tajmahal.data.repository.RestaurantRepository;
 import com.openclassrooms.tajmahal.domain.model.Restaurant;
+import com.openclassrooms.tajmahal.domain.model.Review;
 
 import javax.inject.Inject;
 
 import java.util.Calendar;
+import java.util.List;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
 
@@ -44,6 +46,21 @@ public class DetailsViewModel extends ViewModel {
      */
     public LiveData<Restaurant> getTajMahalRestaurant() {
         return restaurantRepository.getRestaurant();
+    }
+
+    public LiveData<List<Review>> getTajMahalReviews() {
+        return restaurantRepository.getReviews();
+    }
+
+    public float getTajMahalRating() {
+        List<Review> reviews = getTajMahalReviews().getValue();
+        if (reviews == null) return 0.0f;
+        float averageRating = 0.0f;
+        for (Review review : reviews) {
+            averageRating += review.getRate();
+        }
+        averageRating = averageRating / reviews.size();
+        return averageRating;
     }
 
     /**

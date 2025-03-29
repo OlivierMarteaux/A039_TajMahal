@@ -111,7 +111,6 @@
                     android:textColor="#666666"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:text="4.0"
                     tools:text="4.0" />
                 <RatingBar
                     android:id="@+id/ratingBar"
