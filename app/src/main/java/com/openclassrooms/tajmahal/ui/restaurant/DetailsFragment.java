@@ -132,7 +132,7 @@ public class DetailsFragment extends Fragment {
 
     private void updateUIWithReviews(List<Review> reviews) {
         if (reviews == null) return;
-        binding.tvRating.setText(String.valueOf(detailsViewModel.getTajMahalRating()));
+        binding.tvRating.setText(detailsViewModel.getTajMahalRating());
         binding.ratingBar.setRating(detailsViewModel.getTajMahalStarsCount());
         binding.tvReviews.setText(String.valueOf(reviews.size()));
         binding.pb1Star.setProgress(detailsViewModel.getTajMahalRatingStar(1));
