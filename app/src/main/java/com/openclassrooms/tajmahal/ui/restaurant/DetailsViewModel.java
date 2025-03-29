@@ -12,6 +12,7 @@ import com.openclassrooms.tajmahal.domain.model.Review;
 
 import javax.inject.Inject;
 
+import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.List;
 
@@ -52,7 +53,7 @@ public class DetailsViewModel extends ViewModel {
         return restaurantRepository.getReviews();
     }
 
-    public float getTajMahalRating() {
+    public float getTajMahalStarsCount() {
         List<Review> reviews = getTajMahalReviews().getValue();
         if (reviews == null) return 0.0f;
 //        float averageRating = 0.0f;
@@ -68,6 +69,12 @@ public class DetailsViewModel extends ViewModel {
         List<Review> reviews = getTajMahalReviews().getValue();
         if (reviews == null) return 0;
         return (int) reviews.stream().filter(review -> review.getRate() == stars).count();
+    }
+
+    public String getTajMahalRating() {
+        float value = getTajMahalStarsCount();
+        DecimalFormat decimalFormat = new DecimalFormat("#.#");
+        return decimalFormat.format(value);
     }
 
     /**

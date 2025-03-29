@@ -1,5 +1,7 @@
 package com.openclassrooms.tajmahal.ui.restaurant;
 
+import static java.lang.String.format;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -21,6 +23,7 @@ import com.openclassrooms.tajmahal.databinding.FragmentDetailsBinding;
 import com.openclassrooms.tajmahal.domain.model.Restaurant;
 import com.openclassrooms.tajmahal.domain.model.Review;
 
+import java.text.NumberFormat;
 import java.util.List;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -114,7 +117,7 @@ public class DetailsFragment extends Fragment {
 
         binding.tvRestaurantName.setText(restaurant.getName());
         binding.tvRestaurantDay.setText(detailsViewModel.getCurrentDay(requireContext()));
-        binding.tvRestaurantType.setText(String.format("%s %s", getString(R.string.restaurant), restaurant.getType()));
+        binding.tvRestaurantType.setText(format("%s %s", getString(R.string.restaurant), restaurant.getType()));
         binding.tvRestaurantHours.setText(restaurant.getHours());
         binding.tvRestaurantAddress.setText(restaurant.getAddress());
         binding.tvRestaurantWebsite.setText(restaurant.getWebsite());
@@ -130,7 +133,7 @@ public class DetailsFragment extends Fragment {
     private void updateUIWithReviews(List<Review> reviews) {
         if (reviews == null) return;
         binding.tvRating.setText(String.valueOf(detailsViewModel.getTajMahalRating()));
-        binding.ratingBar.setRating(detailsViewModel.getTajMahalRating());
+        binding.ratingBar.setRating(detailsViewModel.getTajMahalStarsCount());
         binding.tvReviews.setText(String.valueOf(reviews.size()));
         binding.pb1Star.setProgress(detailsViewModel.getTajMahalRatingStar(1));
         binding.pb2Star.setProgress(detailsViewModel.getTajMahalRatingStar(2));
@@ -190,5 +193,4 @@ public class DetailsFragment extends Fragment {
     public static DetailsFragment newInstance() {
         return new DetailsFragment();
     }
-
 }

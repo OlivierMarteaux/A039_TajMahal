@@ -153,23 +153,7 @@
                     android:orientation="vertical"
                     android:gravity="end">
                     <ProgressBar
-                        android:id="@+id/pb1Star"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:max="100"
-                        android:progress="10"/>
-                    <ProgressBar
-                        android:id="@+id/pb2Star"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:max="100"
-                        android:progress="10"/>
-                    <ProgressBar
-                        android:id="@+id/pb3Star"
+                        android:id="@+id/pb5Star"
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -185,7 +169,23 @@
                         android:max="100"
                         android:progress="10"/>
                     <ProgressBar
-                        android:id="@+id/pb5Star"
+                        android:id="@+id/pb3Star"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:max="100"
+                        android:progress="10"/>
+                    <ProgressBar
+                        android:id="@+id/pb2Star"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:max="100"
+                        android:progress="10"/>
+                    <ProgressBar
+                        android:id="@+id/pb1Star"
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
