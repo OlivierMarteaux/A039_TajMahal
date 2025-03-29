@@ -15,7 +15,7 @@ Mission - Complétez une interface dynamique en MVVM
 *Vous débutez comme Développeur Android Freelance spécialisé dans la création d'applications pour les petites entreprises locales.*  
 *Votre nouveau client est le restaurant indien Taj Mahal, dirigé par Pramod et Priyanka.*   
 
-![TajMahal icon](app/src/main/res/drawable/ic_launcher.png)
+![TajMahal icon](assets/images/TajMahal_logo.png)
 
 *Ils souhaitent développer une nouvelle fonctionnalité pour leur application mobile : intégrer un système de feed-back permettant aux clients de laisser des avis sur le restaurant.*  
   
