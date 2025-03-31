@@ -53,14 +53,6 @@ public class DetailsViewModel extends ViewModel {
         return restaurantRepository.getReviews();
     }
 
-    public float getTajMahalRating(List<Review> reviews) {
-        return (float) reviews.stream().map(Review::getRate).reduce(0, Integer::sum) / reviews.size();
-    }
-
-    public int getTajMahalStar(int stars, List<Review> reviews) {
-        return (int) reviews.stream().filter(review -> review.getRate() == stars).count();
-    }
-
     /**
      * Retrieves the current day of the week in French.
      *

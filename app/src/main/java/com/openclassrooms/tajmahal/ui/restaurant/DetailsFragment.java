@@ -6,17 +6,16 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.openclassrooms.tajmahal.R;
 import com.openclassrooms.tajmahal.databinding.FragmentDetailsBinding;
@@ -24,7 +23,6 @@ import com.openclassrooms.tajmahal.domain.model.Restaurant;
 import com.openclassrooms.tajmahal.domain.model.Review;
 import com.openclassrooms.tajmahal.utils.Utils;
 
-import java.text.NumberFormat;
 import java.util.List;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -133,14 +131,14 @@ public class DetailsFragment extends Fragment {
 
     private void updateUIWithReviews(List<Review> reviews) {
         if (reviews == null) return;
-        binding.tvRating.setText(Utils.convertFloatTo1DecimalString(detailsViewModel.getTajMahalRating(reviews)));
-        binding.ratingBar.setRating(detailsViewModel.getTajMahalRating(reviews));
+        binding.tvRating.setText(Utils.convertFloatTo1DecimalString(getTajMahalRating(reviews)));
+        binding.ratingBar.setRating(getTajMahalRating(reviews));
         binding.tvReviews.setText(format("( %d )", reviews.size()));
-        binding.pb1Star.setProgress(detailsViewModel.getTajMahalStar(1, reviews));
-        binding.pb2Star.setProgress(detailsViewModel.getTajMahalStar(2, reviews));
-        binding.pb3Star.setProgress(detailsViewModel.getTajMahalStar(3, reviews));
-        binding.pb4Star.setProgress(detailsViewModel.getTajMahalStar(4, reviews));
-        binding.pb5Star.setProgress(detailsViewModel.getTajMahalStar(5, reviews));
+        binding.pb1Star.setProgress(getTajMahalStar(1, reviews));
+        binding.pb2Star.setProgress(getTajMahalStar(2, reviews));
+        binding.pb3Star.setProgress(getTajMahalStar(3, reviews));
+        binding.pb4Star.setProgress(getTajMahalStar(4, reviews));
+        binding.pb5Star.setProgress(getTajMahalStar(5, reviews));
     }
 
     /**
@@ -189,6 +187,14 @@ public class DetailsFragment extends Fragment {
         } else {
             Toast.makeText(requireActivity(), R.string.no_browser_found, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private float getTajMahalRating(List<Review> reviews) {
+        return (float) reviews.stream().map(Review::getRate).reduce(0, Integer::sum) / reviews.size();
+    }
+
+    private int getTajMahalStar(int stars, List<Review> reviews) {
+        return (int) reviews.stream().filter(review -> review.getRate() == stars).count();
     }
 
     public static DetailsFragment newInstance() {
