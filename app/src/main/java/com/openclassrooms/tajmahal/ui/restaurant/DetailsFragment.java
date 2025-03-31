@@ -1,24 +1,29 @@
 package com.openclassrooms.tajmahal.ui.restaurant;
 
+import static java.lang.String.format;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.openclassrooms.tajmahal.R;
 import com.openclassrooms.tajmahal.databinding.FragmentDetailsBinding;
 import com.openclassrooms.tajmahal.domain.model.Restaurant;
+import com.openclassrooms.tajmahal.domain.model.Review;
+import com.openclassrooms.tajmahal.utils.Utils;
+
+import java.util.List;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -63,6 +68,7 @@ public class DetailsFragment extends Fragment {
         setupUI(); // Sets up user interface components.
         setupViewModel(); // Prepares the ViewModel for the fragment.
         detailsViewModel.getTajMahalRestaurant().observe(requireActivity(), this::updateUIWithRestaurant); // Observes changes in the restaurant data and updates the UI accordingly.
+        detailsViewModel.getTajMahalReviews().observe(requireActivity(), this::updateUIWithReviews); // Observes changes in the reviews data and updates the UI accordingly.
     }
 
     /**
@@ -110,7 +116,7 @@ public class DetailsFragment extends Fragment {
 
         binding.tvRestaurantName.setText(restaurant.getName());
         binding.tvRestaurantDay.setText(detailsViewModel.getCurrentDay(requireContext()));
-        binding.tvRestaurantType.setText(String.format("%s %s", getString(R.string.restaurant), restaurant.getType()));
+        binding.tvRestaurantType.setText(format("%s %s", getString(R.string.restaurant), restaurant.getType()));
         binding.tvRestaurantHours.setText(restaurant.getHours());
         binding.tvRestaurantAddress.setText(restaurant.getAddress());
         binding.tvRestaurantWebsite.setText(restaurant.getWebsite());
@@ -121,6 +127,18 @@ public class DetailsFragment extends Fragment {
         binding.buttonAdress.setOnClickListener(v -> openMap(restaurant.getAddress()));
         binding.buttonPhone.setOnClickListener(v -> dialPhoneNumber(restaurant.getPhoneNumber()));
         binding.buttonWebsite.setOnClickListener(v -> openBrowser(restaurant.getWebsite()));
+    }
+
+    private void updateUIWithReviews(List<Review> reviews) {
+        if (reviews == null) return;
+        binding.tvRating.setText(Utils.convertFloatTo1DecimalString(getTajMahalRating(reviews)));
+        binding.ratingBar.setRating(getTajMahalRating(reviews));
+        binding.tvReviews.setText(format("( %d )", reviews.size()));
+        binding.pb1Star.setProgress(getTajMahalStar(1, reviews));
+        binding.pb2Star.setProgress(getTajMahalStar(2, reviews));
+        binding.pb3Star.setProgress(getTajMahalStar(3, reviews));
+        binding.pb4Star.setProgress(getTajMahalStar(4, reviews));
+        binding.pb5Star.setProgress(getTajMahalStar(5, reviews));
     }
 
     /**
@@ -171,8 +189,15 @@ public class DetailsFragment extends Fragment {
         }
     }
 
+    private float getTajMahalRating(List<Review> reviews) {
+        return (float) reviews.stream().map(Review::getRate).reduce(0, Integer::sum) / reviews.size();
+    }
+
+    private int getTajMahalStar(int stars, List<Review> reviews) {
+        return (int) reviews.stream().filter(review -> review.getRate() == stars).count();
+    }
+
     public static DetailsFragment newInstance() {
         return new DetailsFragment();
     }
-
 }
