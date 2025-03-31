@@ -135,11 +135,11 @@ public class DetailsFragment extends Fragment {
         binding.tvRating.setText(detailsViewModel.getTajMahalRating());
         binding.ratingBar.setRating(detailsViewModel.getTajMahalStarsCount());
         binding.tvReviews.setText(String.valueOf(reviews.size()));
-        binding.pb1Star.setProgress(detailsViewModel.getTajMahalRatingStar(1));
-        binding.pb2Star.setProgress(detailsViewModel.getTajMahalRatingStar(2));
-        binding.pb3Star.setProgress(detailsViewModel.getTajMahalRatingStar(3));
-        binding.pb4Star.setProgress(detailsViewModel.getTajMahalRatingStar(4));
-        binding.pb5Star.setProgress(detailsViewModel.getTajMahalRatingStar(5));
+        binding.pb1Star.setProgress(detailsViewModel.getTajMahalStar(1, reviews));
+        binding.pb2Star.setProgress(detailsViewModel.getTajMahalStar(2, reviews));
+        binding.pb3Star.setProgress(detailsViewModel.getTajMahalStar(3, reviews));
+        binding.pb4Star.setProgress(detailsViewModel.getTajMahalStar(4, reviews));
+        binding.pb5Star.setProgress(detailsViewModel.getTajMahalStar(5, reviews));
     }
 
     /**

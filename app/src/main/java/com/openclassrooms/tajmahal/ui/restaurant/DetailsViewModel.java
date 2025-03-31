@@ -65,9 +65,7 @@ public class DetailsViewModel extends ViewModel {
         return (float) reviews.stream().map(Review::getRate).reduce(0, Integer::sum) / reviews.size();
     }
 
-    public int getTajMahalRatingStar(int stars) {
-        List<Review> reviews = getTajMahalReviews().getValue();
-        if (reviews == null) return 0;
+    public int getTajMahalStar(int stars, List<Review> reviews) {
         return (int) reviews.stream().filter(review -> review.getRate() == stars).count();
     }
 
