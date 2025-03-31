@@ -1,4 +1,4 @@
-package com.openclassrooms.tajmahal;
+package com.openclassrooms.tajmahal.ui.reviews;
 
 import android.os.Bundle;
 
@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.openclassrooms.tajmahal.R;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ReviewsFragment#newInstance} factory method to
+ * Use the {@link ReviewFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ReviewsFragment extends Fragment {
+public class ReviewFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +26,7 @@ public class ReviewsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ReviewsFragment() {
+    public ReviewFragment() {
         // Required empty public constructor
     }
 
@@ -37,8 +39,8 @@ public class ReviewsFragment extends Fragment {
      * @return A new instance of fragment ReviewsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ReviewsFragment newInstance(String param1, String param2) {
-        ReviewsFragment fragment = new ReviewsFragment();
+    public static ReviewFragment newInstance(String param1, String param2) {
+        ReviewFragment fragment = new ReviewFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +61,6 @@ public class ReviewsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_reviews, container, false);
+        return inflater.inflate(R.layout.fragment_review, container, false);
     }
 }
