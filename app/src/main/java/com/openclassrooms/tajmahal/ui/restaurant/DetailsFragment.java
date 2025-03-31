@@ -22,6 +22,7 @@ import com.openclassrooms.tajmahal.R;
 import com.openclassrooms.tajmahal.databinding.FragmentDetailsBinding;
 import com.openclassrooms.tajmahal.domain.model.Restaurant;
 import com.openclassrooms.tajmahal.domain.model.Review;
+import com.openclassrooms.tajmahal.utils.Utils;
 
 import java.text.NumberFormat;
 import java.util.List;
@@ -132,9 +133,9 @@ public class DetailsFragment extends Fragment {
 
     private void updateUIWithReviews(List<Review> reviews) {
         if (reviews == null) return;
-        binding.tvRating.setText(detailsViewModel.getTajMahalRating());
-        binding.ratingBar.setRating(detailsViewModel.getTajMahalStarsCount());
-        binding.tvReviews.setText(String.valueOf(reviews.size()));
+        binding.tvRating.setText(Utils.convertFloatTo1DecimalString(detailsViewModel.getTajMahalRating(reviews)));
+        binding.ratingBar.setRating(detailsViewModel.getTajMahalRating(reviews));
+        binding.tvReviews.setText(format("( %d )", reviews.size()));
         binding.pb1Star.setProgress(detailsViewModel.getTajMahalStar(1, reviews));
         binding.pb2Star.setProgress(detailsViewModel.getTajMahalStar(2, reviews));
         binding.pb3Star.setProgress(detailsViewModel.getTajMahalStar(3, reviews));

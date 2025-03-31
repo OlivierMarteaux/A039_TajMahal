@@ -53,26 +53,12 @@ public class DetailsViewModel extends ViewModel {
         return restaurantRepository.getReviews();
     }
 
-    public float getTajMahalStarsCount() {
-        List<Review> reviews = getTajMahalReviews().getValue();
-        if (reviews == null) return 0.0f;
-//        float averageRating = 0.0f;
-//        for (Review review : reviews) {
-//            averageRating += review.getRate();
-//        }
-//        averageRating = averageRating / reviews.size();
-//        return averageRating;
+    public float getTajMahalRating(List<Review> reviews) {
         return (float) reviews.stream().map(Review::getRate).reduce(0, Integer::sum) / reviews.size();
     }
 
     public int getTajMahalStar(int stars, List<Review> reviews) {
         return (int) reviews.stream().filter(review -> review.getRate() == stars).count();
-    }
-
-    public String getTajMahalRating() {
-        float value = getTajMahalStarsCount();
-        DecimalFormat decimalFormat = new DecimalFormat("#.#");
-        return decimalFormat.format(value);
     }
 
     /**
