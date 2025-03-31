@@ -1,0 +1,60 @@
+package com.openclassrooms.tajmahal.ui.reviews;
+
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RatingBar;
+import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.openclassrooms.tajmahal.databinding.FragmentReviewBinding;
+import com.openclassrooms.tajmahal.domain.model.Review;
+import com.openclassrooms.tajmahal.ui.reviews.placeholder.PlaceholderContent.PlaceholderItem;
+
+import java.util.List;
+
+/**
+ * {@link RecyclerView.Adapter} that can display a {@link PlaceholderItem}.
+ * TODO: Replace the implementation with code for your data type.
+ */
+public class MyReviewRecyclerViewAdapter extends RecyclerView.Adapter<MyReviewRecyclerViewAdapter.ViewHolder> {
+
+    private List<Review> reviews;
+
+    public MyReviewRecyclerViewAdapter(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new ViewHolder(FragmentReviewBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
+    }
+
+    @Override
+    public void onBindViewHolder(final ViewHolder holder, int position) {
+        Review review = reviews.get(position);
+//        holder.reviewPicture.setImageResource();
+        holder.reviewComment.setText(review.getComment());
+    }
+
+    @Override
+    public int getItemCount() {
+        return reviews.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView reviewPicture;
+        TextView reviewComment;
+        RatingBar reviewStars;
+        TextView reviewName;
+
+        public ViewHolder(FragmentReviewBinding binding) {
+            super(binding.getRoot());
+            reviewPicture = binding.reviewPicture;
+            reviewName = binding.reviewName;
+            reviewComment = binding.reviewComment;
+            reviewStars = binding.reviewStars;
+        }
+    }
+}

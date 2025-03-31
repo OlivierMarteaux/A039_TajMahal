@@ -39,6 +39,8 @@ android {
 
 dependencies {
     implementation("androidx.work:work-runtime:2.8.1")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.recyclerview:recyclerview:1.3.0")
     val hiltVersion = "2.44"
 
     //Hilt
