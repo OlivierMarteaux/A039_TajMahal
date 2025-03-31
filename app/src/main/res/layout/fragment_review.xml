@@ -6,12 +6,6 @@
     android:orientation="vertical"
     android:padding="20dp"
     tools:context=".ui.reviews.ReviewFragment">
-    <View
-        android:id="@+id/horizontalDivider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_weight="1"
-        android:background="?android:attr/listDivider" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

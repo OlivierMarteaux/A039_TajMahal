@@ -1,27 +1,19 @@
 package com.openclassrooms.tajmahal.ui.reviews;
 
-import static java.lang.String.format;
-
-import android.content.Context;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.openclassrooms.tajmahal.R;
 import com.openclassrooms.tajmahal.databinding.FragmentReviewBinding;
 import com.openclassrooms.tajmahal.domain.model.Review;
 import com.openclassrooms.tajmahal.ui.restaurant.DetailsViewModel;
-import com.openclassrooms.tajmahal.ui.reviews.placeholder.PlaceholderContent;
-import com.openclassrooms.tajmahal.utils.Utils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,6 +28,14 @@ public class ReviewFragment extends Fragment {
      * fragment (e.g. upon screen orientation changes).
      */
     public ReviewFragment() {
+    }
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     * @return A new instance of fragment ReviewFragment.
+     */
+    public static ReviewFragment newInstance() {
+        return new ReviewFragment();
     }
 
     @Override
