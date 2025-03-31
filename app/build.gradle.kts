@@ -53,7 +53,10 @@ dependencies {
     implementation("androidx.work:work-runtime:2.8.1")
     implementation("androidx.core:core-splashscreen:1.0.0")
 
-    implementation("com.squareup.picasso:picasso:2.8")
+//    implementation("com.squareup.picasso:picasso:2.8")
+
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

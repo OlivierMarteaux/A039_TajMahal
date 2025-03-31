@@ -4,8 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="20dp"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:paddingBottom = "8dp"
     tools:context=".ui.reviews.ReviewFragment">
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,12 +22,11 @@
         android:gravity="center_vertical">
         <ImageView
             android:id="@+id/reviewPicture"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:contentDescription="@string/picture"
             android:focusable="true"
             android:padding="8dp"
-            android:
             tools:src="https://xsgames.co/randomusers/assets/avatars/female/31.jpg"/>
         <LinearLayout
             android:layout_width="match_parent"

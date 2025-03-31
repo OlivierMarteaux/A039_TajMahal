@@ -1,11 +1,16 @@
 package com.openclassrooms.tajmahal.ui.reviews;
 
+import static java.lang.String.format;
+
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,6 +18,7 @@ import com.openclassrooms.tajmahal.R;
 import com.openclassrooms.tajmahal.databinding.FragmentReviewBinding;
 import com.openclassrooms.tajmahal.domain.model.Review;
 import com.openclassrooms.tajmahal.ui.restaurant.DetailsViewModel;
+import com.openclassrooms.tajmahal.utils.Utils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -53,6 +59,7 @@ public class ReviewFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Generate list of reviews:
+//        detailsViewModel.getTajMahalReviews().observe(requireActivity(), this::updateUIWithReviews);
 //        List<Review> reviews = detailsViewModel.getTajMahalReviews().getValue();
         List<Review> reviews = Arrays.asList(
                 new Review("Ranjit Singh", "https://xsgames.co/randomusers/assets/avatars/male/71.jpg", "Service très rapide et nourriture délicieuse, nous mangeons ici chaque week-end, c'est très rapide et savoureux. Continuez ainsi!", 2),
@@ -64,5 +71,8 @@ public class ReviewFragment extends Fragment {
         recyclerView.setAdapter(new MyReviewRecyclerViewAdapter(reviews));
 
         return view;
+    }
+    private List<Review> updateUIWithReviews(List<Review> reviews) {
+        return reviews;
     }
 }
