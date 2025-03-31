@@ -18,6 +18,7 @@
             android:contentDescription="@string/picture"
             android:focusable="true"
             android:padding="8dp"
+            android:
             tools:src="https://xsgames.co/randomusers/assets/avatars/female/31.jpg"/>
         <LinearLayout
             android:layout_width="match_parent"

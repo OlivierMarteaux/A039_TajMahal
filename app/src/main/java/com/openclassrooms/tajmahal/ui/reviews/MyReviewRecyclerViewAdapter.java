@@ -8,9 +8,11 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.openclassrooms.tajmahal.R;
 import com.openclassrooms.tajmahal.databinding.FragmentReviewBinding;
 import com.openclassrooms.tajmahal.domain.model.Review;
 import com.openclassrooms.tajmahal.ui.reviews.placeholder.PlaceholderContent.PlaceholderItem;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -35,7 +37,16 @@ public class MyReviewRecyclerViewAdapter extends RecyclerView.Adapter<MyReviewRe
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Review review = reviews.get(position);
 //        holder.reviewPicture.setImageResource();
+
+        Picasso.get()
+                .load(review.getPicture())
+                .placeholder(R.drawable.loading_img)
+                .error(R.drawable.ic_broken_image)
+                .into(holder.reviewPicture);
+
         holder.reviewComment.setText(review.getComment());
+        holder.reviewName.setText(review.getUsername());
+        holder.reviewStars.setRating(review.getRate());
     }
 
     @Override
