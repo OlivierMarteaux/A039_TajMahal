@@ -161,4 +161,9 @@ public class RestaurantFakeApi implements RestaurantApi {
         return reviews;
     }
 
+    @Override
+    public void addReview(Review newReview) {
+        reviews.add(0, newReview);
+    }
+
 }

@@ -55,4 +55,8 @@ public class ReviewViewModel extends ViewModel {
         return new MutableLiveData<>(userReview);
     }
 
+    public void addReview(Review review) {
+        restaurantRepository.addReview(review);
+    }
+
 }

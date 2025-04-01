@@ -78,7 +78,7 @@
                         tools:rating="3"/>
                 </LinearLayout>
                 <Button
-                    android:id="@+id/reviewButton"
+                    android:id="@+id/buttonSubmit"
                     android:layout_width="150dp"
                     android:layout_height="48dp"
                     android:text="@string/submit"/>

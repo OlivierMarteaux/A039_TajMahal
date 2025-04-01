@@ -56,5 +56,8 @@ public class RestaurantRepository {
     public LiveData<List<Review>> getReviews() {
         return new MutableLiveData<>(restaurantApi.getReviews());
     }
+    public void addReview(Review review) {
+        restaurantApi.addReview(review);
+    }
 
 }
