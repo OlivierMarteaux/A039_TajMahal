@@ -1,12 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/list"
-    android:name="com.openclassrooms.tajmahal.ui.reviews.ReviewFragment"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    app:layoutManager="LinearLayoutManager"
-    tools:context=".ui.reviews.ReviewFragment"
-    tools:listitem="@layout/fragment_review" />
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:paddingTop="20dp"
+    android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <ImageView
+                android:id="@+id/backArrow"
+                android:src="@drawable/arrow_back_24px"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="@string/picture"
+                android:focusable="true"/>
+            <TextView
+                android:id="@+id/restaurantName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/jakarta_bold"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="Taj Mahal"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:id="@+id/newReviewPicture"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:contentDescription="@string/picture"
+                    android:focusable="true"
+                    android:padding="8dp"
+                    tools:src="@drawable/martyna_siddeswara"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/newReviewName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/jakarta_bold"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:text="Martyna Siddeswara"/>
+                    <RatingBar
+                        android:id="@+id/reviewStars"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:numStars="5"
+                        android:stepSize="1.0"
+                        android:rating="3.5"
+                        android:isIndicator="false"
+                        style="?android:attr/ratingBarStyleSmall"
+                        tools:rating="3"/>
+                </LinearLayout>
+                <Button
+                    android:id="@+id/reviewButton"
+                    android:layout_width="150dp"
+                    android:layout_height="48dp"
+                    android:text="@string/submit"/>
+            </LinearLayout>
+            <EditText
+                android:id="@+id/editTextExperience"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Share your experience here"
+                android:background="@drawable/share_experience_border"
+                android:padding="12dp"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list"
+        android:name="com.openclassrooms.tajmahal.ui.reviews.ReviewFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="LinearLayoutManager"
+        tools:context=".ui.reviews.ReviewFragment"
+        tools:listitem="@layout/fragment_review" />
+
+</LinearLayout>

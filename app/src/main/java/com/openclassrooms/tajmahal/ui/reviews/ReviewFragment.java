@@ -4,23 +4,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.openclassrooms.tajmahal.R;
 import com.openclassrooms.tajmahal.databinding.FragmentReviewBinding;
 import com.openclassrooms.tajmahal.domain.model.Review;
-
-import com.openclassrooms.tajmahal.ui.restaurant.DetailsViewModel;
-import com.openclassrooms.tajmahal.ui.reviews.ReviewViewModel;
-
-import java.util.Arrays;
 import java.util.List;
-
 import dagger.hilt.android.AndroidEntryPoint;
 
 /**
