@@ -27,6 +27,17 @@ public class MyReviewRecyclerViewAdapter extends RecyclerView.Adapter<MyReviewRe
         this.reviews = reviews;
     }
 
+    public void updateList() {
+        notifyDataSetChanged(); // Full refresh (not always efficient)
+    }
+
+    public void updateItem(int position, Review review) {
+        if (position < reviews.size()) {
+            reviews.set(position, review);
+            notifyItemChanged(position); // Refresh only one item
+        }
+    }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new ViewHolder(FragmentReviewBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));

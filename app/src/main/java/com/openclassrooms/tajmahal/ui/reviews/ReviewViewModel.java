@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel;
 import com.openclassrooms.tajmahal.data.repository.RestaurantRepository;
 import com.openclassrooms.tajmahal.domain.model.Restaurant;
 import com.openclassrooms.tajmahal.domain.model.Review;
+
+import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import dagger.hilt.android.lifecycle.HiltViewModel;
@@ -24,8 +26,8 @@ public class ReviewViewModel extends ViewModel {
     private final Review userReview = new Review(
             "Manon Garcia",
             "https://xsgames.co/randomusers/assets/avatars/female/31.jpg",
-            "Service très rapide et nourriture délicieuse, nous mangeons ici chaque week-end, c'est très rapide et savoureux. Continuez ainsi!",
-            2
+            "",
+            5
     );
 
     /**
@@ -56,7 +58,9 @@ public class ReviewViewModel extends ViewModel {
     }
 
     public void addReview(Review review) {
-        restaurantRepository.addReview(review);
+        List<Review> reviews = restaurantRepository.getReviews().getValue();
+        if (reviews == null) {reviews = new ArrayList<>();}
+        reviews.add(0,review);
+        restaurantRepository.getReviews().setValue(reviews);
     }
-
 }

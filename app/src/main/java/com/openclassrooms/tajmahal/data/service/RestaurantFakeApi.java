@@ -30,7 +30,7 @@ import java.util.List;
  */
 public class RestaurantFakeApi implements RestaurantApi {
 
-    List<Review> reviews = Arrays.asList(
+    List<Review> initialReviews = Arrays.asList(
             new Review("Ranjit Singh", "https://xsgames.co/randomusers/assets/avatars/male/71.jpg", "Service très rapide et nourriture délicieuse, nous mangeons ici chaque week-end, c'est très rapide et savoureux. Continuez ainsi!", 2),
             new Review("Martyna Siddeswara", "https://xsgames.co/randomusers/assets/avatars/female/31.jpg", "Un service excellent et des plats incroyablement savoureux. Nous sommes vraiment satisfaits de notre expérience au restaurant.", 4),
             new Review("Komala Alanazi", "https://xsgames.co/randomusers/assets/avatars/male/46.jpg", "La cuisine est délicieuse et le service est également excellent. Le propriétaire est très sympathique et veille toujours à ce que votre repas soit satisfaisant. Cet endroit est un choix sûr!", 5),
@@ -127,6 +127,8 @@ public class RestaurantFakeApi implements RestaurantApi {
             new Review("Xander Hill", "https://randomuser.me/api/portraits/men/59.jpg", "Good food, but the noise level was too high.", 3),
             new Review("Yara Walker", "https://randomuser.me/api/portraits/women/60.jpg", "The desserts were so sweet, I had to take a to-go box.", 4)
     );
+
+    List<Review> reviews = new ArrayList<>(initialReviews);
 
 
     /**

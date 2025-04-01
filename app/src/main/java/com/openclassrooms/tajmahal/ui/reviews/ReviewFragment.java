@@ -3,6 +3,8 @@ package com.openclassrooms.tajmahal.ui.reviews;
 import static java.lang.String.format;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,10 +62,10 @@ public class ReviewFragment extends Fragment {
 //        View view = inflater.inflate(R.layout.fragment_review_list, container, false);
         binding = FragmentReviewListBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
+        setupViewModel();
 
         RecyclerView recyclerView = view.findViewById(R.id.list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        setupViewModel();
         reviewViewModel.getTajMahalReviews().observe(requireActivity(), new Observer<List<Review>>() {
             @Override
             public void onChanged(List<Review> reviews) {
@@ -119,12 +121,30 @@ public class ReviewFragment extends Fragment {
                 .into(binding.userPicture);
 
         binding.tvUserName.setText(userReview.getUsername());
-        binding.etUserComment.setText(userReview.getComment());
+//        binding.etUserComment.setText(userReview.getComment());
+        binding.etUserComment.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                binding.buttonSubmit.setEnabled(!editable.toString().isEmpty());
+            }
+        });
         binding.userRate.setRating(userReview.getRate());
         binding.buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 reviewViewModel.addReview(userReview);
+                for(int i = 0; i < 20; i++){
+                    adapter.notifyItemChanged(i);
+                }
             }
         });
     }
