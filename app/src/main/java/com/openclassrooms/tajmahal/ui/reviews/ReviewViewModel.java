@@ -35,7 +35,9 @@ public class ReviewViewModel extends ViewModel {
     public void setUserComment(String userComment) {
         this.userReview.setComment(userComment);
     }
-
+    public void setUserRate (int userRate){
+        this.userReview.setRate(userRate);
+    };
     /**
      * Constructor that Hilt will use to create an instance of MainViewModel.
      *

@@ -9,6 +9,8 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -141,6 +143,13 @@ public class ReviewFragment extends Fragment {
             }
         });
         binding.userRate.setRating(userReview.getRate());
+//        reviewViewModel.setUserRate((int) binding.userRate.getRating());
+        binding.userRate.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+                reviewViewModel.setUserRate((int) ratingBar.getRating());
+            }
+        });
         binding.buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
