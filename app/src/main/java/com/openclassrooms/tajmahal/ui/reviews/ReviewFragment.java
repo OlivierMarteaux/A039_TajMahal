@@ -25,6 +25,7 @@ import com.openclassrooms.tajmahal.databinding.FragmentReviewBinding;
 import com.openclassrooms.tajmahal.databinding.FragmentReviewListBinding;
 import com.openclassrooms.tajmahal.domain.model.Restaurant;
 import com.openclassrooms.tajmahal.domain.model.Review;
+import com.openclassrooms.tajmahal.ui.restaurant.DetailsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -160,6 +161,20 @@ public class ReviewFragment extends Fragment {
                 for(int i = 0; i < 20; i++){
                     adapter.notifyItemChanged(i);
                 }
+            }
+        });
+//        binding.backArrow.setOnClickListener(v -> requireActivity()
+//                .getSupportFragmentManager()
+//                .popBackStack());
+        binding.backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getParentFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                DetailsFragment detailsFragment = DetailsFragment.newInstance();
+                fragmentTransaction.add(R.id.fragment_container_view, detailsFragment);
+//                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
             }
         });
     }
