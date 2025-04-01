@@ -23,12 +23,18 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 public class ReviewViewModel extends ViewModel {
 
     private final RestaurantRepository restaurantRepository;
+
+
+
     private final Review userReview = new Review(
             "Manon Garcia",
             "https://xsgames.co/randomusers/assets/avatars/female/31.jpg",
             "",
             5
     );
+    public void setUserComment(String userComment) {
+        this.userReview.setComment(userComment);
+    }
 
     /**
      * Constructor that Hilt will use to create an instance of MainViewModel.
@@ -56,6 +62,9 @@ public class ReviewViewModel extends ViewModel {
     public LiveData<Review> getUserReview() {
         return new MutableLiveData<>(userReview);
     }
+//    public void addReview(Review review) {
+//        restaurantRepository.addReview(review);
+//    }
 
     public void addReview(Review review) {
         List<Review> reviews = restaurantRepository.getReviews().getValue();
@@ -63,4 +72,5 @@ public class ReviewViewModel extends ViewModel {
         reviews.add(0,review);
         restaurantRepository.getReviews().setValue(reviews);
     }
+
 }

@@ -2,6 +2,7 @@ package com.openclassrooms.tajmahal.ui.reviews;
 
 import static java.lang.String.format;
 
+import android.location.GnssAntennaInfo;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -130,10 +131,12 @@ public class ReviewFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
+                reviewViewModel.setUserComment(editable.toString());
                 binding.buttonSubmit.setEnabled(!editable.toString().isEmpty());
             }
         });
@@ -141,7 +144,10 @@ public class ReviewFragment extends Fragment {
         binding.buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                reviewViewModel.addReview(userReview);
+                reviewViewModel.addReview(new Review(userReview.getUsername(), userReview.getPicture(), userReview.getComment(), userReview.getRate()));
+                for (int i = 0; i < 5; i++) {
+                    System.out.println(reviewViewModel.getTajMahalReviews().getValue().get(i).getComment());
+                }
                 for(int i = 0; i < 20; i++){
                     adapter.notifyItemChanged(i);
                 }

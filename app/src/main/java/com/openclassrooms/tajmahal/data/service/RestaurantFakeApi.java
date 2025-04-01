@@ -5,6 +5,7 @@ import com.openclassrooms.tajmahal.domain.model.Review;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -163,9 +164,9 @@ public class RestaurantFakeApi implements RestaurantApi {
         return reviews;
     }
 
-    @Override
-    public void addReview(Review newReview) {
-        reviews.add(0, newReview);
-    }
+//    @Override
+//    public void addReview(Review newReview) {
+//        reviews.add(newReview);
+//    }
 
 }

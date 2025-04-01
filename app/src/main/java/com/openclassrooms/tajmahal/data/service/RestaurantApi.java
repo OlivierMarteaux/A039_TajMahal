@@ -50,5 +50,5 @@ public interface RestaurantApi {
      * @return The {@link Restaurant} object containing all the details of the restaurant.
      */
     List<Review> getReviews();
-    void addReview(Review newReview);
+//    void addReview(Review newReview);
 }
