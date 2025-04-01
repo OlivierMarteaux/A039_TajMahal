@@ -11,6 +11,8 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 import com.openclassrooms.tajmahal.R;
 import com.openclassrooms.tajmahal.databinding.FragmentReviewBinding;
 import com.openclassrooms.tajmahal.databinding.FragmentReviewListBinding;
@@ -92,6 +94,7 @@ public class ReviewFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         reviewViewModel.getTajMahalRestaurant().observe(requireActivity(), this::updateUIWithRestaurant);
+        reviewViewModel.getUserReview().observe(requireActivity(), this::updateUIWithNewReview);
     }
 
     private void setupViewModel() {
@@ -101,5 +104,19 @@ public class ReviewFragment extends Fragment {
     private void updateUIWithRestaurant(Restaurant restaurant) {
         if (restaurant == null) return;
         binding.tvRestaurantName.setText(restaurant.getName());
+    }
+
+    private void updateUIWithNewReview(Review userReview){
+        Glide.with(requireContext())
+                .load(userReview.getPicture())
+                .circleCrop()
+                .placeholder(R.drawable.loading_img) // Optional: loading placeholder
+                .error(R.drawable.ic_broken_image) // Optional: error image
+                .into(binding.userPicture);
+
+        binding.tvUserName.setText(userReview.getUsername());
+        binding.etUserComment.setText(userReview.getComment());
+        binding.userRate.setRating(userReview.getRate());
+
     }
 }

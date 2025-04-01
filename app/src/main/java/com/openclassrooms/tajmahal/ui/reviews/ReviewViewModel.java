@@ -1,6 +1,7 @@
 package com.openclassrooms.tajmahal.ui.reviews;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import com.openclassrooms.tajmahal.data.repository.RestaurantRepository;
 import com.openclassrooms.tajmahal.domain.model.Restaurant;
@@ -20,6 +21,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 public class ReviewViewModel extends ViewModel {
 
     private final RestaurantRepository restaurantRepository;
+    private final Review userReview = new Review(
+            "Manon Garcia",
+            "https://xsgames.co/randomusers/assets/avatars/female/31.jpg",
+            "Service très rapide et nourriture délicieuse, nous mangeons ici chaque week-end, c'est très rapide et savoureux. Continuez ainsi!",
+            2
+    );
 
     /**
      * Constructor that Hilt will use to create an instance of MainViewModel.
@@ -42,6 +49,10 @@ public class ReviewViewModel extends ViewModel {
 
     public LiveData<List<Review>> getTajMahalReviews() {
         return restaurantRepository.getReviews();
+    }
+
+    public LiveData<Review> getUserReview() {
+        return new MutableLiveData<>(userReview);
     }
 
 }
