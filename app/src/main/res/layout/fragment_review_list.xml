@@ -23,7 +23,7 @@
                 android:contentDescription="@string/picture"
                 android:focusable="true"/>
             <TextView
-                android:id="@+id/restaurantName"
+                android:id="@+id/tvRestaurantName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/jakarta_bold"
@@ -56,7 +56,7 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
                     <TextView
-                        android:id="@+id/newReviewName"
+                        android:id="@+id/tvNewReviewName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/jakarta_bold"
@@ -83,7 +83,7 @@
                     android:text="@string/submit"/>
             </LinearLayout>
             <EditText
-                android:id="@+id/editTextExperience"
+                android:id="@+id/etEditTextExperience"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Share your experience here"

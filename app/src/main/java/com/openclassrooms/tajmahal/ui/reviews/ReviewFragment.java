@@ -1,5 +1,7 @@
 package com.openclassrooms.tajmahal.ui.reviews;
 
+import static java.lang.String.format;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.openclassrooms.tajmahal.R;
 import com.openclassrooms.tajmahal.databinding.FragmentReviewBinding;
+import com.openclassrooms.tajmahal.databinding.FragmentReviewListBinding;
+import com.openclassrooms.tajmahal.domain.model.Restaurant;
 import com.openclassrooms.tajmahal.domain.model.Review;
 import java.util.List;
 import dagger.hilt.android.AndroidEntryPoint;
@@ -22,7 +26,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 public class ReviewFragment extends Fragment {
 
     private ReviewViewModel reviewViewModel;
-    private FragmentReviewBinding binding;
+    private FragmentReviewListBinding binding;
     private MyReviewRecyclerViewAdapter adapter;
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -47,7 +51,9 @@ public class ReviewFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_review_list, container, false);
+//        View view = inflater.inflate(R.layout.fragment_review_list, container, false);
+        binding = FragmentReviewListBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
 
         RecyclerView recyclerView = view.findViewById(R.id.list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -60,7 +66,6 @@ public class ReviewFragment extends Fragment {
                 recyclerView.setAdapter(adapter);
                 }
         });
-
         // Generate list of reviews:
 //        detailsViewModel.getTajMahalReviews().observe(requireActivity(), new Observer<List<Review>>() {
 //            @Override
@@ -83,7 +88,18 @@ public class ReviewFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        reviewViewModel.getTajMahalRestaurant().observe(requireActivity(), this::updateUIWithRestaurant);
+    }
+
     private void setupViewModel() {
         reviewViewModel = new ViewModelProvider(this).get(ReviewViewModel.class);
+    }
+
+    private void updateUIWithRestaurant(Restaurant restaurant) {
+        if (restaurant == null) return;
+        binding.tvRestaurantName.setText(restaurant.getName());
     }
 }
