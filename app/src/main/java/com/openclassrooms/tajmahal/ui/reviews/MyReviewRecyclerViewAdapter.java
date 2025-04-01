@@ -12,17 +12,16 @@ import com.bumptech.glide.Glide;
 import com.openclassrooms.tajmahal.R;
 import com.openclassrooms.tajmahal.databinding.FragmentReviewBinding;
 import com.openclassrooms.tajmahal.domain.model.Review;
-import com.openclassrooms.tajmahal.ui.reviews.placeholder.PlaceholderContent.PlaceholderItem;
 
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link PlaceholderItem}.
- * TODO: Replace the implementation with code for your data type.
- */
 public class MyReviewRecyclerViewAdapter extends RecyclerView.Adapter<MyReviewRecyclerViewAdapter.ViewHolder> {
 
     private List<Review> reviews;
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
 
     public MyReviewRecyclerViewAdapter(List<Review> reviews) {
         this.reviews = reviews;
