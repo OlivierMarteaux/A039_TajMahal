@@ -2,6 +2,7 @@ package com.openclassrooms.tajmahal.ui.reviews;
 
 import static java.lang.String.format;
 
+import android.content.Context;
 import android.location.GnssAntennaInfo;
 import android.os.Bundle;
 import android.text.Editable;
@@ -9,7 +10,11 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -125,7 +130,6 @@ public class ReviewFragment extends Fragment {
                 .into(binding.userPicture);
 
         binding.tvUserName.setText(userReview.getUsername());
-//        binding.etUserComment.setText(userReview.getComment());
         binding.etUserComment.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
