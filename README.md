@@ -1,6 +1,6 @@
 # A039_TajMahal  
   
-![Screen 1](assets/screenshots/A039_TajMahal_screen01_20250403.jpg)	![Screen 2](assets/screenshots/A039_TajMahal_screen02_20250403.jpg)
+![Screen 1](assets/screenshots/A039_TajMahal_screen01_20250403.png)	![Screen 2](assets/screenshots/A039_TajMahal_screen02_20250403.png)
   
 **OpenClassroom training:**  
 Mission - Complétez une interface dynamique en MVVM  
