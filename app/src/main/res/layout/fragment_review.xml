@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom = "12dp"
+    tools:context=".ui.reviews.ReviewFragment">
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="4dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <ImageView
+            android:id="@+id/reviewPicture"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:contentDescription="@string/picture"
+            android:focusable="true"
+            android:padding="8dp"
+            tools:src="https://xsgames.co/randomusers/assets/avatars/female/31.jpg"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/reviewName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/jakarta_bold"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="Martyna Siddeswara"/>
+            <RatingBar
+                android:id="@+id/reviewStars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:numStars="5"
+                android:stepSize="1.0"
+                android:rating="3.5"
+                android:isIndicator="false"
+                style="?android:attr/ratingBarStyleSmall"
+                tools:rating="3"/>
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/reviewComment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        tools:text="Service très rapide et nourriture délicieuse, nous mangeons ici chaque week-end, c'est très rapide et savoureux. Continuez ainsi!"/>
+</LinearLayout>

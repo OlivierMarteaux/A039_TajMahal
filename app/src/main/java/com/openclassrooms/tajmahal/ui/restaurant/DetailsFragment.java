@@ -15,12 +15,15 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.openclassrooms.tajmahal.R;
 import com.openclassrooms.tajmahal.databinding.FragmentDetailsBinding;
 import com.openclassrooms.tajmahal.domain.model.Restaurant;
 import com.openclassrooms.tajmahal.domain.model.Review;
+import com.openclassrooms.tajmahal.ui.reviews.ReviewFragment;
 import com.openclassrooms.tajmahal.utils.Utils;
 
 import java.util.List;
@@ -69,6 +72,17 @@ public class DetailsFragment extends Fragment {
         setupViewModel(); // Prepares the ViewModel for the fragment.
         detailsViewModel.getTajMahalRestaurant().observe(requireActivity(), this::updateUIWithRestaurant); // Observes changes in the restaurant data and updates the UI accordingly.
         detailsViewModel.getTajMahalReviews().observe(requireActivity(), this::updateUIWithReviews); // Observes changes in the reviews data and updates the UI accordingly.
+        binding.tvLeaveAComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getParentFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                ReviewFragment reviewFragment = ReviewFragment.newInstance();
+                fragmentTransaction.add(R.id.fragment_container_view, reviewFragment);
+//                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
     }
 
     /**
@@ -84,6 +98,7 @@ public class DetailsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentDetailsBinding.inflate(inflater, container, false); // Binds the layout using view binding.
+        binding.tvLeaveAComment.setEnabled(true);
         return binding.getRoot(); // Returns the root view.
     }
 

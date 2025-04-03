@@ -193,20 +193,16 @@
                         android:max="100"
                         android:progress="10"/>
                 </LinearLayout>
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
-
                 <TextView
                     android:id="@+id/tvLeaveAComment"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:fontFamily="@font/jakarta_regular"
                     android:textColor="#666666"
                     android:textSize="12sp"
                     android:textStyle="bold"
+                    android:textAlignment="textEnd"
+                    android:gravity="bottom"
                     android:text="Laisser un avis"
                     tools:text="Laisser un avis" />
             </LinearLayout>

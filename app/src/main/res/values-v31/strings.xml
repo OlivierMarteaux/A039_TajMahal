@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="back_button">back button</string>
+    <string name="picture" />
+    <string name="submit">Submit</string>
+    <string name="share_your_experience_here">Share your experience here</string>
+</resources>
