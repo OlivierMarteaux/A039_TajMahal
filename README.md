@@ -14,9 +14,9 @@ Mission - Complétez une interface dynamique en MVVM
   
 ### Objectives  
   
-- [] Add restaurant rating and reviews synthesis on main Screen  
-- [] Create a second screen which list all restaurant reviews and let user create a new one.  
-- [] Perform the unit tests and provide the results
+- [ ] Add restaurant rating and reviews synthesis on main Screen  
+- [ ] Create a second screen which list all restaurant reviews and let user create a new one.  
+- [ ] Perform the unit tests and provide the results
   
   
 ### Introduction  
