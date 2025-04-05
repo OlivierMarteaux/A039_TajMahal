@@ -39,7 +39,7 @@ public class ReviewViewModelTests {
     }
 
     @Test
-    public void reviewViewModel_AddNewReview_UpdatesTajMahalReviews()  {
+    public void reviewViewModel_AddNewReview_UpdatesTajMahalReviews() throws InterruptedException {
         List<Review> initialReviews = viewModel.getTajMahalReviews().getValue();
         viewModel.addReview(new Review("Manon Garcia", "https://example.com/avatar.jpg", "Great restaurant!", 5));
         List<Review> finalReviews = viewModel.getTajMahalReviews().getValue();
