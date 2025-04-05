@@ -70,7 +70,7 @@ public class ReviewViewModel extends ViewModel {
 
     public void addReview(Review review) {
         List<Review> reviews = restaurantRepository.getReviews().getValue();
-        if (reviews == null) {reviews = new ArrayList<>();}
+//        if (reviews == null) {reviews = new ArrayList<>();}
         reviews.add(0,review);
         restaurantRepository.getReviews().setValue(reviews);
     }
