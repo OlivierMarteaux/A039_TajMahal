@@ -38,7 +38,12 @@ import java.util.List;
 import dagger.hilt.android.AndroidEntryPoint;
 
 /**
- * A fragment representing a list of Items.
+ * ReviewFragment is the second screen accessed when clicking on "Leave a comment" from the main
+ * screen. It displays the list of reviews and allows the user to add a new review.
+ * <p>
+ * This class uses {@link com.openclassrooms.tajmahal.databinding.FragmentReviewListBinding} for data binding to its layout and
+ * {@link com.openclassrooms.tajmahal.ui.reviews.ReviewViewModel} to interact with data sources and manage UI-related data.
+ * it also uses {@link com.openclassrooms.tajmahal.ui.reviews.MyReviewRecyclerViewAdapter} to display the list of reviews.
  */
 @AndroidEntryPoint
 public class ReviewFragment extends Fragment {
@@ -46,12 +51,14 @@ public class ReviewFragment extends Fragment {
     private ReviewViewModel reviewViewModel;
     private FragmentReviewListBinding binding;
     private MyReviewRecyclerViewAdapter adapter;
+
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
     public ReviewFragment() {
     }
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -61,15 +68,31 @@ public class ReviewFragment extends Fragment {
         return new ReviewFragment();
     }
 
+    /**
+     * This method is called when the fragment is first created.
+     * It's used to perform one-time initialization.
+     *
+     * @param savedInstanceState A bundle containing previously saved instance state.
+     * If the fragment is being re-created from a previous saved state, this is the state.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
+    /**
+     * Creates and returns the view hierarchy associated with the fragment.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
+     * The fragment should not add the view itself but return it.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     * @return Returns the View for the fragment's UI, or null.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-//        View view = inflater.inflate(R.layout.fragment_review_list, container, false);
         binding = FragmentReviewListBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         setupViewModel();
@@ -87,6 +110,14 @@ public class ReviewFragment extends Fragment {
         return view;
     }
 
+    /**
+     * This method is called immediately after `onCreateView()`.
+     * Use this method to perform final initialization once the fragment views have been inflated.
+     *
+     * @param view The View returned by `onCreateView()`.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -94,15 +125,28 @@ public class ReviewFragment extends Fragment {
         reviewViewModel.getUserReview().observe(requireActivity(), this::updateUIWithNewReview);
     }
 
+    /**
+     * Initializes the ViewModel for this activity.
+     */
     private void setupViewModel() {
         reviewViewModel = new ViewModelProvider(this).get(ReviewViewModel.class);
     }
 
+    /**
+     * Updates the UI components with the provided restaurant data.
+     *
+     * @param restaurant The restaurant object containing details to be displayed.
+     */
     private void updateUIWithRestaurant(Restaurant restaurant) {
         if (restaurant == null) return;
         binding.tvRestaurantName.setText(restaurant.getName());
     }
 
+    /**
+     * Updates the UI components with the provided user review data.
+     *
+     * @param userReview The user review object containing the details to be displayed.
+     */
     private void updateUIWithNewReview(Review userReview){
         Glide.with(requireContext())
                 .load(userReview.getPicture())
@@ -112,6 +156,7 @@ public class ReviewFragment extends Fragment {
                 .into(binding.userPicture);
 
         binding.tvUserName.setText(userReview.getUsername());
+
         binding.etUserComment.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -129,24 +174,24 @@ public class ReviewFragment extends Fragment {
                 binding.buttonSubmit.setEnabled(!editable.toString().isEmpty());
             }
         });
+
         binding.userRate.setRating(userReview.getRate());
-//        reviewViewModel.setUserRate((int) binding.userRate.getRating());
+
         binding.userRate.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
                 reviewViewModel.setUserRate((int) ratingBar.getRating());
             }
         });
+
         binding.buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 InputMethodManager imm = ContextCompat.getSystemService(requireContext(), InputMethodManager.class);
                 View currentFocus = getActivity().getCurrentFocus();
                 if (imm != null && currentFocus != null) {
                     imm.hideSoftInputFromWindow(currentFocus.getWindowToken(), 0);
                 }
-
                 reviewViewModel.addReview(new Review(userReview.getUsername(), userReview.getPicture(), userReview.getComment(), userReview.getRate()));
                 reviewViewModel.setUserComment("");
                 binding.etUserComment.setText("");
