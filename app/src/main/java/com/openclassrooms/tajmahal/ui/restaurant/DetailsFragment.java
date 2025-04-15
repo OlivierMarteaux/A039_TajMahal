@@ -144,6 +144,11 @@ public class DetailsFragment extends Fragment {
         binding.buttonWebsite.setOnClickListener(v -> openBrowser(restaurant.getWebsite()));
     }
 
+    /**
+     * Updates the UI components with the provided reviews data.
+     *
+     * @param reviews The reviews list object containing all the reviews to be displayed.
+     */
     private void updateUIWithReviews(List<Review> reviews) {
         if (reviews == null) return;
         binding.tvRating.setText(Utils.convertFloatTo1DecimalString(getTajMahalRating(reviews)));
@@ -204,10 +209,29 @@ public class DetailsFragment extends Fragment {
         }
     }
 
+    /**
+     * Calculates the average rating for the TajMahal based on a list of reviews.
+     *
+     * <p>This method sums the ratings from all reviews and divides by the total number of reviews
+     * to compute the average. The result is returned as a float.</p>
+     *
+     * @param reviews a list of {@link Review} objects to compute the average rating from
+     * @return the average rating as a {@code float}
+     */
     private float getTajMahalRating(List<Review> reviews) {
         return (float) reviews.stream().map(Review::getRate).reduce(0, Integer::sum) / reviews.size();
     }
 
+    /**
+     * Get the reviews amount rating the restaurant at a given star rating (from 1 to 5).
+     *
+     * <p>This method filters the list of reviews to those that match the given star rating
+     * and returns the count.</p>
+     *
+     * @param stars the star rating to count (e.g., 1 to 5)
+     * @param reviews a list of {@link Review} objects to analyze
+     * @return the number of reviews with the given star rating
+     */
     private int getTajMahalStar(int stars, List<Review> reviews) {
         return (int) reviews.stream().filter(review -> review.getRate() == stars).count();
     }
