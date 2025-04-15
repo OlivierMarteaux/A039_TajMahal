@@ -1,6 +1,6 @@
 # A039_TajMahal  
   
-![Screen 1](assets/screenshots/A039_TajMahal_screen01_20250403.jpg)	![Screen 2](assets/screenshots/A039_TajMahal_screen02_20250403.jpg)
+![Screen 1](assets/images/A039_TajMahal_screen01_20250403.jpg)	![Screen 2](assets/images/A039_TajMahal_screen02_20250403.jpg)
   
 **OpenClassroom training:**  
 Mission - Complétez une interface dynamique en MVVM  
@@ -11,12 +11,14 @@ Mission - Complétez une interface dynamique en MVVM
   
 [Link to the screen recorder](assets/screenRecorder/)
   
+[Link to the UI tests report](assets/tests/)
+  
   
 ### Objectives  
   
-- [ ] Add restaurant rating and reviews synthesis on main Screen  
-- [ ] Create a second screen which list all restaurant reviews and let user create a new one.  
-- [ ] Perform the unit tests and provide the results
+- [x] Add restaurant rating and reviews synthesis on main Screen  
+- [x] Create a second screen which list all restaurant reviews and let user create a new one.  
+- [x] Perform the unit tests and provide the results
   
   
 ### Introduction  

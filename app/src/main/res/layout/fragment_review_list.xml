@@ -70,6 +70,7 @@
                         android:id="@+id/userRate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:progressTint="#FFC107"
                         android:paddingTop="4dp"
                         android:paddingBottom="4dp"
                         android:numStars="5"
@@ -81,15 +82,19 @@
                 </LinearLayout>
                 <Button
                     android:id="@+id/buttonSubmit"
-                    android:layout_width="150dp"
+                    android:layout_width="100dp"
                     android:layout_height="48dp"
+                    android:backgroundTint="#CF2F2F"
+                    android:textColor="@color/white"
                     android:text="@string/submit"
                     android:enabled="false"/>
             </LinearLayout>
             <EditText
                 android:id="@+id/etUserComment"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
+                android:imeOptions="actionDone"
+                android:inputType="text"
                 android:hint="@string/share_your_experience_here"
                 android:background="@drawable/share_experience_border"
                 android:padding="12dp"

@@ -24,20 +24,31 @@ public class ReviewViewModel extends ViewModel {
 
     private final RestaurantRepository restaurantRepository;
 
-
-
     private final Review userReview = new Review(
             "Manon Garcia",
             "https://xsgames.co/randomusers/assets/avatars/female/31.jpg",
             "",
-            5
+            0
     );
+
+    /**
+     * Sets the user comment for the review.
+     *
+     * @param userComment The new comment to be set.
+     */
     public void setUserComment(String userComment) {
         this.userReview.setComment(userComment);
     }
+
+    /**
+     * Sets the user rate for the review.
+     *
+     * @param userRate The new rate to be set.
+     */
     public void setUserRate (int userRate){
         this.userReview.setRate(userRate);
     };
+
     /**
      * Constructor that Hilt will use to create an instance of MainViewModel.
      *
@@ -49,30 +60,46 @@ public class ReviewViewModel extends ViewModel {
     }
 
     /**
-     * Fetches the Review of the Taj Mahal restaurant.
+     * Fetches the restaurant TajMahal data.
      *
-     * @return LiveData object containing the Review of the Taj Mahal restaurant.
+     * @return LiveData object containing the Taj Mahal restaurant data.
      */
     public LiveData<Restaurant> getTajMahalRestaurant() {
         return restaurantRepository.getRestaurant();
     }
 
+    /**
+     * Fetches the Review of the Taj Mahal restaurant.
+     *
+     * @return LiveData object containing the Review of the Taj Mahal restaurant.
+     */
     public LiveData<List<Review>> getTajMahalReviews() {
         return restaurantRepository.getReviews();
     }
 
+    /**
+     * Fetches the user review for the Taj Mahal restaurant.
+     *
+     * @return LiveData object containing the user review for the Taj Mahal restaurant.
+     */
     public LiveData<Review> getUserReview() {
         return new MutableLiveData<>(userReview);
     }
-//    public void addReview(Review review) {
-//        restaurantRepository.addReview(review);
-//    }
 
+    /**
+     * Adds a new {@link Review} to the beginning of the reviews list and updates the LiveData.
+     *
+     * <p>This method retrieves the current list of reviews from the {@code restaurantRepository}.
+     * If the list is {@code null}, it initializes a new list. The new review is then inserted
+     * at the top of the list (index 0), and the updated list is set back into the LiveData
+     * to notify any observers.</p>
+     *
+     * @param review the {@code Review} object to be added to the reviews list
+     */
     public void addReview(Review review) {
         List<Review> reviews = restaurantRepository.getReviews().getValue();
         if (reviews == null) {reviews = new ArrayList<>();}
         reviews.add(0,review);
         restaurantRepository.getReviews().setValue(reviews);
     }
-
 }
