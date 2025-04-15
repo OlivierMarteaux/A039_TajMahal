@@ -48,7 +48,7 @@ public class ReviewViewModel extends ViewModel {
     public void setUserRate (int userRate){
         this.userReview.setRate(userRate);
     };
-    
+
     /**
      * Constructor that Hilt will use to create an instance of MainViewModel.
      *
@@ -85,9 +85,6 @@ public class ReviewViewModel extends ViewModel {
     public LiveData<Review> getUserReview() {
         return new MutableLiveData<>(userReview);
     }
-//    public void addReview(Review review) {
-//        restaurantRepository.addReview(review);
-//    }
 
     /**
      * Adds a new {@link Review} to the beginning of the reviews list and updates the LiveData.
@@ -105,5 +102,4 @@ public class ReviewViewModel extends ViewModel {
         reviews.add(0,review);
         restaurantRepository.getReviews().setValue(reviews);
     }
-
 }
