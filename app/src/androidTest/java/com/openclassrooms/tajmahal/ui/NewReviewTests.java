@@ -41,7 +41,7 @@ public class NewReviewTests {
     }
 
     @Test
-    public void leaveAComment_3Stars_SubmittedAndShownInFirstPosition() {
+    public void leaveAComment_3StarsWithFullComment_SubmittedAndShownInFirstPosition() {
         onView(withId(R.id.etUserComment)).perform(replaceText("Très bon restaurant"), closeSoftKeyboard());
         onView(withId(R.id.userRate)).perform(RatingBarActions.setRating(3.0f));
         onView(withId(R.id.buttonSubmit)).perform(click());
@@ -54,7 +54,7 @@ public class NewReviewTests {
     }
 
     @Test
-    public void leaveAComment_BlankComment_CannotSubmit() {
+    public void leaveAComment_EmptyComment_CannotSubmit() {
         onView(withId(R.id.buttonSubmit)).perform(click());
         onView(withId(R.id.buttonSubmit)).check(matches(isNotEnabled()));
     }
