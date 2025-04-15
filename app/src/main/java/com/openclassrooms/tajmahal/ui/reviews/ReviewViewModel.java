@@ -30,7 +30,7 @@ public class ReviewViewModel extends ViewModel {
             "Manon Garcia",
             "https://xsgames.co/randomusers/assets/avatars/female/31.jpg",
             "",
-            5
+            0
     );
     public void setUserComment(String userComment) {
         this.userReview.setComment(userComment);
