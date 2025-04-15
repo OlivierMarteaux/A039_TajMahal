@@ -30,12 +30,25 @@ public class ReviewViewModel extends ViewModel {
             "",
             0
     );
+
+    /**
+     * Sets the user comment for the review.
+     *
+     * @param userComment The new comment to be set.
+     */
     public void setUserComment(String userComment) {
         this.userReview.setComment(userComment);
     }
+
+    /**
+     * Sets the user rate for the review.
+     *
+     * @param userRate The new rate to be set.
+     */
     public void setUserRate (int userRate){
         this.userReview.setRate(userRate);
     };
+    
     /**
      * Constructor that Hilt will use to create an instance of MainViewModel.
      *
