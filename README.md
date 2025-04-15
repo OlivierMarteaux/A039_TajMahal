@@ -11,7 +11,7 @@ Mission - Complétez une interface dynamique en MVVM
   
 [Link to the screen recorder](assets/screenRecorder/)
   
-[Link to the UI tests report](assets/tests/NewReviewTests.html)
+[Link to the UI tests report](assets/tests/)
   
   
 ### Objectives  
