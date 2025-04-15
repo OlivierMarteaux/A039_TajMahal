@@ -49,6 +49,11 @@ public class DetailsViewModel extends ViewModel {
         return restaurantRepository.getRestaurant();
     }
 
+    /**
+     * Fetches the reviews of the Taj Mahal restaurant.
+     *
+     * @return LiveData object containing the reviews of the Taj Mahal restaurant.
+     */
     public LiveData<List<Review>> getTajMahalReviews() {
         return restaurantRepository.getReviews();
     }
@@ -90,5 +95,4 @@ public class DetailsViewModel extends ViewModel {
         }
         return dayString;
     }
-
 }
