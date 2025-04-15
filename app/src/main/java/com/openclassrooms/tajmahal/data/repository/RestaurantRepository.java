@@ -27,7 +27,9 @@ import javax.inject.Singleton;
 @Singleton
 public class RestaurantRepository {
 
-    // The API interface instance that will be used for network requests related to restaurant data.
+    /**
+     * The API interface instance that will be used for network requests related to restaurant data.
+     */
     private final RestaurantApi restaurantApi;
 
     /**
@@ -54,7 +56,6 @@ public class RestaurantRepository {
         return new MutableLiveData<>(restaurantApi.getRestaurant());
     }
 
-
     /**
      * Retrieves a list of reviews from the restaurant API and wraps it in a {@link MutableLiveData}.
      *
@@ -67,8 +68,4 @@ public class RestaurantRepository {
     public MutableLiveData<List<Review>> getReviews() {
         return new MutableLiveData<>(restaurantApi.getReviews());
     }
-//    public void addReview(Review review) {
-//        restaurantApi.addReview(review);
-//    }
-
 }

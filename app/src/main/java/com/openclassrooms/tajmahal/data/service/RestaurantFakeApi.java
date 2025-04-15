@@ -131,7 +131,6 @@ public class RestaurantFakeApi implements RestaurantApi {
 
     List<Review> reviews = new ArrayList<>(initialReviews);
 
-
     /**
      * Retrieves a hard-coded {@link Restaurant} object for the "Taj Mahal".
      * <p>
@@ -149,7 +148,6 @@ public class RestaurantFakeApi implements RestaurantApi {
                 true, true);
     }
 
-
     /**
      * Retrieves a hard-coded {@link Review} object for the "Taj Mahal".
      * <p>
@@ -163,10 +161,4 @@ public class RestaurantFakeApi implements RestaurantApi {
     public List<Review> getReviews() {
         return reviews;
     }
-
-//    @Override
-//    public void addReview(Review newReview) {
-//        reviews.add(newReview);
-//    }
-
 }
