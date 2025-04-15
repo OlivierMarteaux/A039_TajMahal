@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -158,18 +159,22 @@ public class ReviewFragment extends Fragment {
         binding.buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                reviewViewModel.addReview(new Review(userReview.getUsername(), userReview.getPicture(), userReview.getComment(), userReview.getRate()));
-                for (int i = 0; i < 5; i++) {
-                    System.out.println(reviewViewModel.getTajMahalReviews().getValue().get(i).getComment());
+
+                InputMethodManager imm = ContextCompat.getSystemService(requireContext(), InputMethodManager.class);
+                View currentFocus = getActivity().getCurrentFocus();
+                if (imm != null && currentFocus != null) {
+                    imm.hideSoftInputFromWindow(currentFocus.getWindowToken(), 0);
                 }
+
+                reviewViewModel.addReview(new Review(userReview.getUsername(), userReview.getPicture(), userReview.getComment(), userReview.getRate()));
+                reviewViewModel.setUserComment("");
+                binding.etUserComment.setText("");
                 for(int i = 0; i < 20; i++){
                     adapter.notifyItemChanged(i);
                 }
             }
         });
-//        binding.backArrow.setOnClickListener(v -> requireActivity()
-//                .getSupportFragmentManager()
-//                .popBackStack());
+
         binding.backArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
