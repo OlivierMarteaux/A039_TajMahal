@@ -24,8 +24,6 @@ public class ReviewViewModel extends ViewModel {
 
     private final RestaurantRepository restaurantRepository;
 
-
-
     private final Review userReview = new Review(
             "Manon Garcia",
             "https://xsgames.co/randomusers/assets/avatars/female/31.jpg",
