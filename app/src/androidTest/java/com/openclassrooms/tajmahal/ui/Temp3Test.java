@@ -15,6 +15,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static com.openclassrooms.tajmahal.utils.RatingBarMatcher.withRating;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.is;
 
@@ -89,9 +90,8 @@ public class Temp3Test {
         onView(withId(R.id.list))
                 .perform(RecyclerViewActions.scrollToPosition(0))
                 .check(matches(hasDescendant(allOf(withId(R.id.reviewComment), withText("test")))))
-                .check(matches(hasDescendant(allOf(withId(R.id.reviewName), withText("Manon Garcia")))));
-
-
+                .check(matches(hasDescendant(allOf(withId(R.id.reviewName), withText("Manon Garcia")))))
+                .check(matches(hasDescendant(allOf(withId(R.id.reviewStars), withRating(3.0f)))));
     }
 
     private static Matcher<View> childAtPosition(
