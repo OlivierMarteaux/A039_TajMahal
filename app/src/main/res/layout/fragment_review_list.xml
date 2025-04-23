@@ -84,7 +84,7 @@
                     android:id="@+id/buttonSubmit"
                     android:layout_width="100dp"
                     android:layout_height="48dp"
-                    android:backgroundTint="#CF2F2F"
+                    android:backgroundTint="@color/button_submit"
                     android:textColor="@color/white"
                     android:text="@string/submit"
                     android:enabled="false"/>
