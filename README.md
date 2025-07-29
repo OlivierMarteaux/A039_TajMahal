@@ -1,101 +1,98 @@
-# A039_TajMahal  
-  
-![Screen 1](assets/images/A039_TajMahal_screen01_20250403.jpg)	![Screen 2](assets/images/A039_TajMahal_screen02_20250403.jpg)
-  
-**OpenClassroom training:**  
-Mission - Complétez une interface dynamique en MVVM  
-  
-[Link to the starter repository](https://github.com/OpenClassrooms-Student-Center/Compl-tez-une-interface-dynamique-en-MVVM.git)  
-  
-[Link to the Openclassroom project](https://openclassrooms.com/fr/paths/527/projects/1635/143-mission---completez-une-interface-dynamique-en-mvvm)  
-  
-[Link to the screen recorder](assets/screenRecorder/)
-  
-[Link to the UI tests report](assets/tests/)
-  
-  
-### Objectives  
-  
-- [x] Add restaurant rating and reviews synthesis on main Screen  
-- [x] Create a second screen which list all restaurant reviews and let user create a new one.  
-- [x] Perform the unit tests and provide the results
-  
-  
-### Introduction  
-  
-##### Scénario  
-  
-*Vous débutez comme Développeur Android Freelance spécialisé dans la création d'applications pour les petites entreprises locales.*  
-*Votre nouveau client est le restaurant indien Taj Mahal, dirigé par Pramod et Priyanka.*   
 
-![TajMahal icon](assets/images/TajMahal_logo.png)
+# 📱 Taj Mahal – Restaurant Review Android App
 
-*Ils souhaitent développer une nouvelle fonctionnalité pour leur application mobile : intégrer un système de feed-back permettant aux clients de laisser des avis sur le restaurant.*  
-  
-*Vous travaillez avec Priyanka qui, en plus d’être gérante du restaurant, s’y connaît bien en code !*  
-  
-*Elle vous envoie un premier mail :*   
+**Taj Mahal** is a modern Android application developed in **Java**, enabling users to explore restaurant details and post reviews. Built as part of a professional training program at OpenClassrooms, it demonstrates key Android development concepts including MVVM architecture, custom UI components, simulated data API, and Jetpack ViewModel.
 
+---
+
+## 🧠 Features
+
+- 🏛️ Display restaurant details (name, description, photo).
+- ⭐ View and submit reviews with star ratings and comments.
+- 📶 Data retrieved via a **fake API layer** simulating network interaction.
+- 🔁 Uses **MVVM architecture** for separation of concerns.
+- 🧪 Includes **instrumented tests** for critical UI flows.
+
+---
+
+## 📸 Screenshots
+
+Visit the following link to browse screenshots of the Taj-Mahal application:  
+🔗 [Taj-Mahal App Screenshots](assets/screenshots/)
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| Language | Java |
+| UI | Fragments, RecyclerView, ViewModel |
+| Architecture | MVVM |
+| API | Simulated with `RestaurantFakeApi` |
+| Dependency Injection | Dagger/Hilt |
+| Testing | JUnit, Espresso |
+| Build | Gradle (KTS) |
+
+---
+
+## 📁 Project Structure
 
 ```
-De : Priyanka  
-À : Moi  
-    
-Bonjour,   
-  
-J’espère que vous avez autant hâte que moi de  
-travailler sur ce projet !  
-  
-Je vous joins dès maintenant le code source de  
-l’application et la maquette en pièces jointes.  
-  
-Une précision pour commencer : le back-end n'est pas  
-encore opérationnel, mais vous pouvez commencer   
-le développement en utilisant la FakeApi que j'ai mise  
-en place pour simuler le comportement d’une  
-réelle Api.  
-Je prendrai en charge l'intégration avec le vrai  
-back-end une fois qu'il sera prêt.  
-  
-Pour vous aider dans la phase de développement, j'ai  
-intégré quelques avis collectés depuis d'autres   
-plateformes dans la FakeAPI.  
-Cela vous permettra de tester l’interface en conditions  
-réelles.  
-  
-Pour l’utilisateur courant (pour poster les avis), vous  
-pouvez mettre “Manon Garcia” comme dans la     
-maquette par défaut.  
-Je m’occuperai des comptes utilisateurs lorsque le  
-back-end sera en ligne.   
-  
-Voici les tâches que je vous confie :  
-  
-  - Intégrer la moyenne des notes du restaurant sur la  
-  page principale, tout en respectant le design   
-	proposé dans les maquettes ;  
-  - Concevoir un écran dédié où les utilisateurs  
-  pourront consulter tous les avis existants et en     
-	soumettre de nouveaux.  
-  - Lors de la validation d'un nouvel avis, celui-ci  
-  devra apparaître en tête de liste ;  
-  - Mettre en place des tests unitaires assurant le bon  
-  fonctionnement de l'ajout d'un avis.  
-  
-Le code est entièrement documenté avec de la Javadoc,  
-il faut conserver cette dynamique et   
-documenter le code que vous allez produire.  
-  
-N’hésitez pas si vous avez des questions.  
-  
-Une fois que vous avez terminé, envoyez-moi une capture  
-par écran de l'interface utilisateur   
-(au format .jpeg ou .png) et le rapport de tests  
-unitaires (au format .html.).  
+A039_TajMahal/
+├── app/
+│   └── src/
+│       ├── main/
+│       │   ├── java/com/openclassrooms/tajmahal/
+│       │   │   ├── ui/                   # UI layer with Fragments and ViewModels
+│       │   │   ├── domain/model/         # Data models (Restaurant, Review)
+│       │   │   ├── data/service/         # Fake API service
+│       │   │   ├── data/repository/      # Repository layer
+│       │   │   ├── di/                   # Dependency injection module
+│       │   │   └── utils/                # Utility classes
+│       │   └── res/                      # XML layout, drawables, etc.
+│       └── androidTest/                  # Instrumented UI tests
+```
 
-Merci,   
-  
-Bien à vous,  
-Priyanka.  
-```  
-  
+---
+
+## ⚙️ Setup
+
+### Prerequisites
+
+- Android Studio
+- JDK 17
+- Android SDK (API 33+)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/oliviermarteaux/A039_TajMahal.git
+   ```
+
+2. Open the project in **Android Studio**.
+
+3. Sync Gradle and build the project:
+   - Gradle files: `build.gradle.kts`, `settings.gradle.kts`
+
+4. Run on emulator or physical device (API 33+).
+
+---
+
+## 🤝 Acknowledgments
+
+- [OpenClassrooms Android Pathway](https://openclassrooms.com/fr/paths/527/projects/1635/143-mission---completez-une-interface-dynamique-en-mvvm)
+- [Starter repository](https://github.com/OpenClassrooms-Student-Center/Compl-tez-une-interface-dynamique-en-MVVM.git)
+- [Google Android Basics](https://developer.android.com/courses/android-basics-compose/course)
+- JetBrains & Jetpack Compose Community
+ 
+---
+
+### 📄 License
+
+This project is for educational and demonstration purposes. Not licensed for commercial use. For inquiries, please contact me.
+
+---
+
+_“From Space to Code” – a journey of reinvention and curiosity._
